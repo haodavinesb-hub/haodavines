@@ -27,7 +27,14 @@ tại [vieneu.io](https://www.vieneu.io). v3 Turbo là bản mở mới nhất.
 → **Muốn giống nhất mà vẫn miễn phí: làm mức 2 (fine-tune LoRA).** Skill này có
 sẵn script cho cả hai mức.
 
-## Cài đặt
+## Cách nhanh nhất: Colab (không cần cài gì)
+
+[**▶ Mở notebook trên Colab**](https://colab.research.google.com/github/haodavinesb-hub/haodavines/blob/claude/github-voice-synthesis-projects-uzr588/.claude/skills/clone-giong-noi/notebooks/clone-giong-colab.ipynb) — upload giọng mẫu, nghe kết quả, tải về.
+Dùng GPU T4 miễn phí. Hợp khi chỉ muốn thử nhanh hoặc máy không cài được.
+
+Notebook: [`notebooks/clone-giong-colab.ipynb`](notebooks/clone-giong-colab.ipynb)
+
+## Cài trên máy
 
 ```bash
 bash .claude/skills/clone-giong-noi/scripts/install.sh

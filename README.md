@@ -6,7 +6,11 @@
 |---|---|
 | [`clone-giong-noi`](.claude/skills/clone-giong-noi/SKILL.md) | Clone giọng nói tiếng Việt tự nhiên bằng [VieNeu-TTS v3 Turbo](https://github.com/pnnbao97/VieNeu-TTS) — clone tức thì từ clip 3–8 giây, hoặc fine-tune LoRA để bám giọng sát hơn |
 
-### Dùng skill clone giọng nói
+### Cách nhanh nhất — Colab, không cần cài
+
+[**▶ Mở notebook trên Colab**](https://colab.research.google.com/github/haodavinesb-hub/haodavines/blob/claude/github-voice-synthesis-projects-uzr588/.claude/skills/clone-giong-noi/notebooks/clone-giong-colab.ipynb)
+
+### Cài trên máy
 
 ```bash
 # 1. Cài đặt (tự chọn bản CUDA hay ONNX theo phần cứng)
