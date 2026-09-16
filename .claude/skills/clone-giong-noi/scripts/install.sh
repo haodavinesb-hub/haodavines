@@ -4,6 +4,10 @@
 #        VIENEU_DIR=/path bash install.sh
 set -euo pipefail
 
+# Phai lay duong dan script TRUOC khi cd di noi khac: BASH_SOURCE la duong dan
+# tuong doi so voi cwd luc goi, cd roi thi resolve ra sai.
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
 VIENEU_DIR="${VIENEU_DIR:-$HOME/VieNeu-TTS}"
 REPO="https://github.com/pnnbao97/VieNeu-TTS.git"
 
@@ -52,8 +56,10 @@ cat <<MSG
     Giao dien web:
         cd $VIENEU_DIR && uv run vieneu-web      # http://127.0.0.1:7860
 
-    Clone giong tu dong lenh:
-        bash $(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/clone.py --help
+    Clone giong tu dong lenh (chay trong moi truong cua VieNeu):
+        cd $VIENEU_DIR
+        uv run python $SCRIPT_DIR/clone.py --text bai.txt --ref mau.wav -o ket-qua.wav
+        uv run python $SCRIPT_DIR/clone.py --list-voices
 
 MSG
 if ! command -v nvidia-smi >/dev/null 2>&1; then

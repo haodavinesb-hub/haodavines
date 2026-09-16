@@ -90,7 +90,23 @@ def main() -> int:
         kwargs["precision"] = "int8"
 
     print("==> Đang nạp VieNeu-TTS v3 Turbo...")
-    tts = Vieneu(**kwargs)
+    print("    (lần chạy đầu sẽ tải model từ Hugging Face, mất vài phút)")
+    try:
+        tts = Vieneu(**kwargs)
+    except Exception as e:
+        loi = str(e)
+        if "huggingface.co" in loi or "ProxyError" in loi or "Max retries" in loi:
+            print("\nLỖI: không tải được model từ Hugging Face.", file=sys.stderr)
+            print("Kiểm tra theo thứ tự:", file=sys.stderr)
+            print("  1. Máy có vào được https://huggingface.co không?", file=sys.stderr)
+            print("  2. Đang sau proxy/firewall chặn HF? Đặt HTTPS_PROXY cho đúng.", file=sys.stderr)
+            print("  3. Máy offline? Tải model trước ở máy có mạng rồi copy cache sang:",
+                  file=sys.stderr)
+            print("     huggingface-cli download pnnbao-ump/VieNeu-TTS-v3-Turbo", file=sys.stderr)
+            print("     rồi copy ~/.cache/huggingface sang máy này và đặt HF_HUB_OFFLINE=1",
+                  file=sys.stderr)
+            return 2
+        raise
 
     if args.list_voices:
         voices = tts.list_preset_voices()

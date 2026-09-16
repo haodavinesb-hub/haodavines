@@ -115,72 +115,26 @@ Nhớ tải model về trước khi Colab ngắt phiên — nếu không là m�
 v3 Turbo dùng phonemizer [sea-g2p](https://github.com/pnnbao97/sea-g2p) nên đọc
 tiếng Việt khá chuẩn, nhưng số và viết tắt vẫn nên tự chuẩn hoá trước.
 
----
+## Máy offline hoặc bị chặn Hugging Face
 
-# Phụ lục: ebook2audiobook (khi cần đọc thẳng .epub/.pdf)
-
-[ebook2audiobook](https://github.com/DrewThomasson/ebook2audiobook) (Apache-2.0,
-~20k sao) đọc thẳng `.epub .pdf .mobi .docx`…, tự tách chương, xuất `.m4b`.
-Scripts: `scripts/e2a-install.sh` và `scripts/e2a-doc.sh`.
+Model tải từ Hugging Face ở lần chạy đầu (`pnnbao-ump/VieNeu-TTS-v3-Turbo`).
+Nếu máy không vào được HF (firewall công ty, proxy chặn, máy offline):
 
 ```bash
-bash .claude/skills/clone-giong-noi/scripts/e2a-install.sh
-cd ~/ebook2audiobook && ./ebook2audiobook.sh --help     # lần đầu tải vài GB
-bash .claude/skills/clone-giong-noi/scripts/e2a-doc.sh sach.epub giong-mau.wav
+# Ở máy CÓ mạng
+huggingface-cli download pnnbao-ump/VieNeu-TTS-v3-Turbo
+huggingface-cli download OpenMOSS-Team/MOSS-Audio-Tokenizer-Nano
+
+# Copy ~/.cache/huggingface sang máy đích, rồi:
+export HF_HUB_OFFLINE=1
 ```
 
-## ⚠️ Vì sao chất lượng tiếng Việt kém hơn VieNeu
-
-Kiểm chứng trong `lib/conf_models.py` của bản v26.9.7, README không nói rõ điều này:
-
-**XTTSv2 không hỗ trợ tiếng Việt** — chỉ 17 thứ tiếng
-(`ara ces deu eng fra hin hun ita jpn kor nld pol por rus spa tur zho`), không có `vie`.
-
-Với `--language vie`, luồng thực tế là:
-
-1. **FAIRSEQ (Meta MMS)** sinh tiếng Việt bằng **giọng nội bộ cố định**
-   (`"voice": None, "voices": {}`) — tự nó không clone được
-2. Có `--voice` → code bật cờ `use_zs` rồi chạy thêm bước **voice conversion**
-   (mặc định `knnvc`, 16 kHz) để ép sang giọng mẫu
-
-Tức là *đổi giọng sau khi tổng hợp*, không phải clone gốc — nên không thể "giống hệt".
-
-Đổi model voice conversion trong `lib/conf_models.py` dòng ~64 có thể đỡ hơn chút:
-
-```python
-default_vc_model = TTS_VOICE_CONVERSION['openvoice_v2']['path']
-```
-
-| Model | Samplerate |
-|---|---|
-| `knnvc` | 16000 (mặc định) |
-| `freevc24` | 24000 |
-| `openvoice_v1` / `openvoice_v2` | 22050 |
-
-## Tham số ebook2audiobook hay dùng
-
-| Tham số | Ý nghĩa |
-|---|---|
-| `--ebook` | File nguồn |
-| `--voice` | Clip giọng mẫu (README khuyến nghị **1–5 phút**) |
-| `--language` | ISO-639-3: `vie`, `eng`, `jpn`… |
-| `--tts_engine` | Tiếng Việt bắt buộc `fairseq` |
-| `--device` | `CPU` `CUDA` `MPS` `ROCM` `XPU` `JETSON` |
-| `--output_format` | `mp3` `m4b` `wav` `flac` `aac` `ogg` |
-| `--repetition_penalty` | Mặc định `2.0`. Tăng nếu lặp từ khi đọc dài |
-
-SML tags chèn thẳng vào text: `[break]` (0.3–0.6s), `[pause]` (1.0–1.6s),
-`[pause:3]` (đúng 3s), `[voice:/path/giong2.wav]...[/voice]`.
-
-## Hướng kết hợp
-
-Dùng ebook2audiobook (hoặc `calibre`/`pandoc`) để **trích text** từ ebook, rồi
-đưa text đó sang **VieNeu-TTS** để đọc. Được cả hai: tách chương tự động và
-chất lượng giọng tiếng Việt tốt.
+Đổi chỗ lưu cache bằng `HF_HOME=/duong/dan/khac`.
 
 ## Nguồn
 
 - [pnnbao97/VieNeu-TTS](https://github.com/pnnbao97/VieNeu-TTS) — Apache-2.0
 - [VieNeu-TTS-v3-Turbo trên Hugging Face](https://huggingface.co/pnnbao-ump/VieNeu-TTS-v3-Turbo)
-- [DrewThomasson/ebook2audiobook](https://github.com/DrewThomasson/ebook2audiobook) — Apache-2.0
-- Cấu hình engine đã kiểm chứng: `lib/conf_models.py`, `lib/classes/tts_engines/fairseq.py`
+- [sea-g2p](https://github.com/pnnbao97/sea-g2p) — phonemizer tiếng Việt của v3 Turbo
+- API đã đối chiếu trực tiếp với package `vieneu` trên PyPI (`vieneu/v3turbo.py`,
+  `vieneu/factory.py`), không chỉ dựa vào README

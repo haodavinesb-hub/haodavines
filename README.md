@@ -9,7 +9,7 @@
 ### Dùng skill clone giọng nói
 
 ```bash
-# 1. Cài đặt
+# 1. Cài đặt (tự chọn bản CUDA hay ONNX theo phần cứng)
 bash .claude/skills/clone-giong-noi/scripts/install.sh
 
 # 2. Clone tức thì từ clip 3-8 giây
@@ -20,6 +20,8 @@ uv run python ~/haodavines/.claude/skills/clone-giong-noi/scripts/clone.py \
 # 3. Muốn giống sát hơn: fine-tune LoRA (cần GPU ~6GB, 10-30 phút audio sạch)
 bash .claude/skills/clone-giong-noi/scripts/finetune.sh giong_toi ./du-lieu-giong ./mau.wav
 ```
+
+Giao diện web: `cd ~/VieNeu-TTS && uv run vieneu-web` → `http://127.0.0.1:7860`
 
 Chi tiết: [SKILL.md](.claude/skills/clone-giong-noi/SKILL.md) ·
 [reference.md](.claude/skills/clone-giong-noi/reference.md)

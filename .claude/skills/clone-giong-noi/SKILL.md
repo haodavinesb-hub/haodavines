@@ -1,6 +1,6 @@
 ---
 name: clone-giong-noi
-description: Clone giọng nói tiếng Việt tự nhiên, giống giọng gốc, bằng VieNeu-TTS v3 Turbo - clone tức thì từ clip 3-8 giây hoặc fine-tune LoRA để bám giọng sát hơn. Dùng khi người dùng muốn giả giọng, nhân bản giọng nói, lồng tiếng, đọc văn bản/sách nói tiếng Việt, hoặc nhắc tới VieNeu, voice cloning, TTS tiếng Việt, ebook2audiobook.
+description: Clone giọng nói tiếng Việt tự nhiên, giống giọng gốc, bằng VieNeu-TTS v3 Turbo - clone tức thì từ clip 3-8 giây hoặc fine-tune LoRA để bám giọng sát hơn. Dùng khi người dùng muốn giả giọng, nhân bản giọng nói, lồng tiếng, đọc văn bản/sách nói tiếng Việt, hoặc nhắc tới VieNeu, voice cloning, giả giọng, TTS tiếng Việt.
 ---
 
 # Clone giọng nói tiếng Việt (VieNeu-TTS v3 Turbo)
@@ -135,11 +135,23 @@ export sẵn của model gốc nên không nhận model fine-tune.
 | `acc_cb0` gần 0 khi train | Text trong `metadata.csv` không khớp audio. Kiểm tra lại từng dòng |
 | Hết VRAM khi train | Thêm `--grad-checkpoint`, hoặc giảm `--batch-size` |
 
-## Cần đọc thẳng .epub / .pdf?
+## Cần đọc từ .epub / .pdf?
 
-VieNeu-TTS nhận text thuần. Muốn đọc thẳng ebook và tự tách chương, xuất `.m4b`,
-dùng ebook2audiobook — nhưng **chất lượng tiếng Việt kém hơn hẳn**. Chi tiết và
-scripts (`e2a-install.sh`, `e2a-doc.sh`) trong [reference.md](reference.md).
+VieNeu-TTS nhận **text thuần**. Trích text ra trước rồi đưa vào:
+
+```bash
+# .epub / .mobi  (calibre)
+ebook-convert sach.epub sach.txt
+
+# .pdf
+pdftotext -layout sach.pdf sach.txt
+
+# .docx
+pandoc sach.docx -t plain -o sach.txt
+```
+
+Mở file `.txt` ra dọn lại (bỏ mục lục, header/footer, số trang), tách đoạn bằng
+dòng trống, rồi chạy `clone.py`.
 
 ## Lưu ý pháp lý
 
