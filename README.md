@@ -4,17 +4,21 @@
 
 | Skill | Mô tả |
 |---|---|
-| [`clone-giong-noi`](.claude/skills/clone-giong-noi/SKILL.md) | Clone giọng nói và đọc văn bản dài thành audiobook bằng [ebook2audiobook](https://github.com/DrewThomasson/ebook2audiobook), có hướng dẫn riêng cho tiếng Việt |
+| [`clone-giong-noi`](.claude/skills/clone-giong-noi/SKILL.md) | Clone giọng nói tiếng Việt tự nhiên bằng [VieNeu-TTS v3 Turbo](https://github.com/pnnbao97/VieNeu-TTS) — clone tức thì từ clip 3–8 giây, hoặc fine-tune LoRA để bám giọng sát hơn |
 
 ### Dùng skill clone giọng nói
 
 ```bash
-# 1. Cài đặt (lần đầu, tải vài GB)
+# 1. Cài đặt
 bash .claude/skills/clone-giong-noi/scripts/install.sh
-cd ~/ebook2audiobook && ./ebook2audiobook.sh --help
 
-# 2. Đọc văn bản bằng giọng clone
-bash .claude/skills/clone-giong-noi/scripts/doc.sh bai-viet.txt giong-mau.wav
+# 2. Clone tức thì từ clip 3-8 giây
+cd ~/VieNeu-TTS
+uv run python ~/haodavines/.claude/skills/clone-giong-noi/scripts/clone.py \
+    --text bai-viet.txt --ref giong-mau.wav -o ket-qua.wav
+
+# 3. Muốn giống sát hơn: fine-tune LoRA (cần GPU ~6GB, 10-30 phút audio sạch)
+bash .claude/skills/clone-giong-noi/scripts/finetune.sh giong_toi ./du-lieu-giong ./mau.wav
 ```
 
 Chi tiết: [SKILL.md](.claude/skills/clone-giong-noi/SKILL.md) ·

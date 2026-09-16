@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # Doc van ban bang giong clone.
-# Dung:  bash doc.sh <file_nguon> <file_giong_mau> [ma_ngon_ngu] [dinh_dang]
-# VD:    bash doc.sh bai-viet.txt giong-cua-toi.wav
-#        bash doc.sh sach.epub giong.wav eng m4b
+# Dung:  bash e2a-doc.sh <file_nguon> <file_giong_mau> [ma_ngon_ngu] [dinh_dang]
+# VD:    bash e2a-doc.sh bai-viet.txt giong-cua-toi.wav
+#        bash e2a-doc.sh sach.epub giong.wav eng m4b
 set -euo pipefail
 
 E2A_DIR="${E2A_DIR:-$HOME/ebook2audiobook}"
@@ -12,14 +12,14 @@ LANG_CODE="${3:-vie}"
 OUT_FORMAT="${4:-mp3}"
 
 if [ -z "$EBOOK" ] || [ -z "$VOICE" ]; then
-    echo "Dung: bash doc.sh <file_nguon> <file_giong_mau> [ma_ngon_ngu] [dinh_dang]" >&2
-    echo "VD:   bash doc.sh bai-viet.txt giong-cua-toi.wav" >&2
+    echo "Dung: bash e2a-doc.sh <file_nguon> <file_giong_mau> [ma_ngon_ngu] [dinh_dang]" >&2
+    echo "VD:   bash e2a-doc.sh bai-viet.txt giong-cua-toi.wav" >&2
     exit 1
 fi
 
 if [ ! -d "$E2A_DIR" ]; then
     echo "LOI: chua cai ebook2audiobook tai $E2A_DIR" >&2
-    echo "Chay truoc: bash $(dirname "${BASH_SOURCE[0]}")/install.sh" >&2
+    echo "Chay truoc: bash $(dirname "${BASH_SOURCE[0]}")/e2a-install.sh" >&2
     exit 1
 fi
 [ -f "$EBOOK" ] || { echo "LOI: khong thay file nguon: $EBOOK" >&2; exit 1; }

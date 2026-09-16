@@ -1,62 +1,65 @@
 #!/usr/bin/env bash
-# Cai dat ebook2audiobook de clone giong noi.
-# Dung:  bash install.sh          -> cai vao ~/ebook2audiobook
-#        E2A_DIR=/path bash install.sh
+# Cai dat VieNeu-TTS de clone giong noi tieng Viet chat luong cao.
+# Dung:  bash install.sh
+#        VIENEU_DIR=/path bash install.sh
 set -euo pipefail
 
-E2A_DIR="${E2A_DIR:-$HOME/ebook2audiobook}"
-REPO="https://github.com/DrewThomasson/ebook2audiobook.git"
+VIENEU_DIR="${VIENEU_DIR:-$HOME/VieNeu-TTS}"
+REPO="https://github.com/pnnbao97/VieNeu-TTS.git"
 
-echo "==> Thu muc cai dat: $E2A_DIR"
+echo "==> Thu muc cai dat: $VIENEU_DIR"
 
-# --- Kiem tra Python: repo yeu cau >3.9 va <3.13 ---
-if ! command -v python3 >/dev/null 2>&1; then
-    echo "LOI: khong tim thay python3. Cai Python 3.10-3.12 truoc." >&2
-    exit 1
+# --- uv: trinh quan ly moi truong ma repo khuyen dung ---
+# uv sync tai dung ban ONNX Runtime da toi uu -> nhanh hon pip install nhieu.
+if ! command -v uv >/dev/null 2>&1; then
+    echo "==> Chua co uv, dang cai..."
+    curl -LsSf https://astral.sh/uv/install.sh | sh
+    export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
 fi
-PYV="$(python3 -c 'import sys; print("%d.%d" % sys.version_info[:2])')"
-if ! python3 -c 'import sys; sys.exit(0 if (3,9) < sys.version_info[:2] < (3,13) else 1)'; then
-    echo "LOI: Python $PYV khong duoc ho tro. Can >3.9 va <3.13." >&2
-    exit 1
-fi
-echo "==> Python $PYV OK"
-
-# --- Canh bao dung luong dia (model can ~10GB) ---
-AVAIL_GB="$(df -Pk "$(dirname "$E2A_DIR")" | awk 'NR==2 {print int($4/1024/1024)}')"
-if [ "${AVAIL_GB:-0}" -lt 10 ]; then
-    echo "CANH BAO: chi con ${AVAIL_GB}GB trong. Model TTS can khoang 10GB." >&2
-fi
+command -v uv >/dev/null 2>&1 || { echo "LOI: cai uv that bai. Xem https://astral.sh/uv" >&2; exit 1; }
+echo "==> uv $(uv --version 2>/dev/null || echo '?')"
 
 # --- Clone hoac cap nhat ---
-if [ -d "$E2A_DIR/.git" ]; then
+if [ -d "$VIENEU_DIR/.git" ]; then
     echo "==> Da co san, dang cap nhat..."
-    git -C "$E2A_DIR" pull --ff-only
+    git -C "$VIENEU_DIR" pull --ff-only
 else
     echo "==> Dang tai ve tu GitHub..."
-    git clone --depth 1 "$REPO" "$E2A_DIR"
+    git clone --depth 1 "$REPO" "$VIENEU_DIR"
 fi
 
-chmod +x "$E2A_DIR"/*.sh "$E2A_DIR"/*.command 2>/dev/null || true
-echo "==> Phien ban: $(cat "$E2A_DIR/VERSION.txt" 2>/dev/null || echo 'khong ro')"
+cd "$VIENEU_DIR"
 
-# --- Bao cao thiet bi ---
+# --- Chon bien cai dat theo phan cung ---
+# GPU NVIDIA -> PyTorch (bat buoc neu muon fine-tune LoRA).
+# Con lai   -> ONNX torch-free, nhanh hon tren CPU va ca Apple Silicon.
 if command -v nvidia-smi >/dev/null 2>&1; then
-    echo "==> Phat hien GPU NVIDIA -> dung --device CUDA"
-elif [ "$(uname -s)" = "Darwin" ] && [ "$(uname -m)" = "arm64" ]; then
-    echo "==> Apple Silicon -> dung --device MPS"
+    echo "==> Phat hien GPU NVIDIA -> cai ban CUDA (PyTorch)"
+    echo "    (can ban nay neu muon fine-tune LoRA de clone 'giong het')"
+    uv sync --extra cuda
+    BACKEND="GPU / PyTorch"
 else
-    echo "==> Khong co GPU -> se chay CPU (CHAM)"
+    echo "==> Khong co GPU NVIDIA -> cai ban ONNX torch-free"
+    echo "    Tren macOS/Apple Silicon day cung la ban NHANH NHAT (nhanh hon MPS)."
+    uv sync
+    BACKEND="CPU / ONNX"
 fi
 
-cat <<'MSG'
+cat <<MSG
 
-==> Tai ve xong. Buoc cuoi: chay launcher chinh thuc mot lan de no tu cai
-    Miniforge3 + cac goi he thong (ffmpeg, espeak-ng, sox, mediainfo,
-    calibre, tesseract, nodejs, cmake) + moi truong Python.
+==> Cai xong. Backend: $BACKEND
 
-    Lan chay dau MAT KHA LAU (tai vai GB).
+    Giao dien web:
+        cd $VIENEU_DIR && uv run vieneu-web      # http://127.0.0.1:7860
+
+    Clone giong tu dong lenh:
+        bash $(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/clone.py --help
+
 MSG
-echo "        cd $E2A_DIR && ./ebook2audiobook.sh --help"
-echo
-echo "    Sau do doc van ban:"
-echo "        bash $(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/doc.sh <file.txt> <giong-mau.wav>"
+if ! command -v nvidia-smi >/dev/null 2>&1; then
+cat <<'MSG'
+    LUU Y: khong co GPU NVIDIA nen KHONG fine-tune LoRA duoc (can ~6GB VRAM).
+    Ban chi dung duoc clone tuc thi tu clip 3-8s. Muon "giong het" thi can
+    fine-tune -> dung Google Colab (co GPU mien phi). Xem reference.md.
+MSG
+fi
