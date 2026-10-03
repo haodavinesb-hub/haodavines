@@ -1,0 +1,180 @@
+{
+  "ten": "Chan Hair",
+  "domain": "https://chanhair.vn",
+  "mo_ta_ngan": "chuỗi salon tóc tại TP.HCM, Hà Nội và Đà Nẵng: cắt tạo kiểu, nhuộm, uốn, phục hồi tóc.",
+  "logo": "",
+  "khoang_gia": "",
+  "thanh_pho_chinh": "TP. Hồ Chí Minh",
+  "menu": [
+    [
+      "Trang chủ",
+      "/"
+    ],
+    [
+      "Kiểu tóc layer",
+      "/toc-layer/"
+    ],
+    [
+      "Cắt tóc layer TP.HCM",
+      "/cat-toc-layer-ho-chi-minh/"
+    ]
+  ],
+  "dat_lich": {
+    "zalo": "0824599999",
+    "dien_thoai": "0963834909"
+  },
+  "mang_xa_hoi": {
+    "instagram": "https://www.instagram.com/chan_hairsalon/",
+    "tiktok": "https://www.tiktok.com/@chanhair401",
+    "facebook": "",
+    "youtube": ""
+  },
+  "chi_nhanh": [
+    {
+      "id": "chan-hair-401-su-van-hanh",
+      "ten": "Chan Hair 401 Sư Vạn Hạnh (Quận 10)",
+      "dia_chi": "401 Sư Vạn Hạnh",
+      "phuong": "Phường Hòa Hưng",
+      "dia_chi_cu": "Phường 12, Quận 10 cũ",
+      "thanh_pho": "TP. Hồ Chí Minh",
+      "dien_thoai": "",
+      "gio_mo_cua": "8:30 – 20:00 hằng ngày",
+      "opening_hours": [
+        "Mo-Su 08:30-20:00"
+      ],
+      "facebook": "https://www.facebook.com/chanhairsalon.401suvanhanh/",
+      "google_maps": "",
+      "lat": null,
+      "lng": null
+    },
+    {
+      "id": "chan-hair-64-d5-binh-thanh",
+      "ten": "Chan Hair 64 D5 (Bình Thạnh)",
+      "dia_chi": "64 Đường D5",
+      "phuong": "Phường Thạnh Mỹ Tây",
+      "dia_chi_cu": "Phường 25, Bình Thạnh cũ",
+      "thanh_pho": "TP. Hồ Chí Minh",
+      "dien_thoai": "",
+      "gio_mo_cua": "8:30 – 20:00 hằng ngày",
+      "opening_hours": [
+        "Mo-Su 08:30-20:00"
+      ],
+      "facebook": "https://www.facebook.com/ChanHairSalon.Duong64.D5/",
+      "google_maps": "",
+      "lat": null,
+      "lng": null
+    },
+    {
+      "id": "chan-hair-cau-giay",
+      "ten": "Chan Hair Cầu Giấy (Hà Nội)",
+      "dia_chi": "Số 7, Ngõ 12 Trần Quý Kiên",
+      "phuong": "Cầu Giấy",
+      "dia_chi_cu": "",
+      "thanh_pho": "Hà Nội",
+      "dien_thoai": "",
+      "gio_mo_cua": "8:30 – 20:00 hằng ngày",
+      "opening_hours": [
+        "Mo-Su 08:30-20:00"
+      ],
+      "facebook": "",
+      "google_maps": "",
+      "lat": null,
+      "lng": null
+    }
+  ],
+  "trang_dich_vu": {
+    "path": "/cat-toc-layer-ho-chi-minh/",
+    "breadcrumb": "Cắt tóc layer TP.HCM",
+    "tu_khoa_chinh": "cắt tóc layer",
+    "ten_dich_vu": "Cắt tóc layer tại TP.HCM",
+    "title": "Cắt Tóc Layer Nữ Đẹp TPHCM – Quận 10, Bình Thạnh | Chan Hair",
+    "meta_description": "Cắt tóc layer nữ tại TP.HCM: layer dài, ngang vai, ngắn, mái bay, butterfly, hush cut, wolf cut. Stylist tư vấn theo khuôn mặt. Salon ở Quận 10 và Bình Thạnh.",
+    "h1": "Cắt tóc layer nữ đẹp tại TP.HCM – Chan Hair",
+    "lead": "Tóc layer được cắt thành nhiều tầng dài ngắn khác nhau, giúp mái tóc nhẹ, bồng và có độ chuyển động tự nhiên. Ở Chan Hair, mỗi kiểu layer được tính theo khuôn mặt, độ dày và nếp tóc của riêng bạn.",
+    "gioi_thieu": [
+      "Cùng là “tóc layer” nhưng mỗi người hợp một kiểu khác nhau: tóc dày cần tỉa bớt độ nặng ở phần đuôi, tóc mỏng lại cần giữ phần nền dày để không bị lưa thưa; mặt tròn hợp tầng bắt đầu từ dưới cằm, mặt dài hợp tầng bồng ở hai bên má. Vì vậy stylist của Chan Hair luôn xem tóc thật và hỏi thói quen chăm tóc của bạn trước khi cầm kéo.",
+      "Chan Hair có hai salon ở Sài Gòn – 401 Sư Vạn Hạnh (Quận 10) và 64 D5 (Bình Thạnh) – nhận cắt mọi kiểu layer đang được yêu thích: layer dài kiểu Hàn, layer ngang vai, layer ngắn, layer mái bay, butterfly cut (tóc bướm), hush cut, wolf cut, hime cut… và kết hợp uốn, nhuộm hoặc phục hồi nếu bạn muốn kiểu tóc giữ nếp lâu hơn."
+    ],
+    "h2_kieu": "Các kiểu tóc layer đang được yêu thích",
+    "mo_ta_kieu": "Bấm vào từng kiểu để xem ảnh thật khách cắt tại salon, kiểu đó hợp với khuôn mặt và chất tóc nào, cách chăm sóc tại nhà.",
+    "ly_do": [
+      "Tư vấn trước khi cắt: stylist xem khuôn mặt, độ dày và nếp tóc rồi mới đề xuất số tầng và độ dài phù hợp.",
+      "Giá công khai, không phát sinh phụ phí, không ép làm thêm dịch vụ.",
+      "Sấy tạo kiểu sau khi cắt và hướng dẫn bạn tự sấy tại nhà để tóc layer vào nếp mỗi ngày.",
+      "Có thể kết hợp uốn, nhuộm màu thời trang, ombre/balayage và phục hồi tóc trong cùng một buổi.",
+      "Hai salon tại TP.HCM: 401 Sư Vạn Hạnh (Quận 10) và 64 D5 (Bình Thạnh), mở cửa 8:30 – 20:00 tất cả các ngày."
+    ],
+    "quy_trinh": [
+      {
+        "buoc": "Tư vấn",
+        "mo_ta": "Xem khuôn mặt, chất tóc, ảnh mẫu bạn thích và thói quen tạo kiểu hằng ngày."
+      },
+      {
+        "buoc": "Gội và chuẩn bị",
+        "mo_ta": "Gội sạch, chia tóc thành từng phần theo kiểu layer đã chọn."
+      },
+      {
+        "buoc": "Cắt tầng",
+        "mo_ta": "Cắt phần nền, sau đó cắt từng tầng và tỉa mỏng phần đuôi cho tóc nhẹ, có độ rơi."
+      },
+      {
+        "buoc": "Sấy tạo kiểu",
+        "mo_ta": "Sấy phồng chân tóc, uốn cụp hoặc vểnh đuôi theo kiểu, chỉnh lại các tầng khi tóc khô."
+      },
+      {
+        "buoc": "Hướng dẫn chăm sóc",
+        "mo_ta": "Chỉ cách sấy tại nhà, sản phẩm nên dùng và thời điểm nên quay lại tỉa tầng."
+      }
+    ],
+    "bang_gia": [],
+    "ghi_chu_gia": [],
+    "gia_mac_dinh": [
+      "Giá cắt tóc layer phụ thuộc độ dài, độ dày tóc và kiểu bạn chọn. Stylist sẽ báo giá rõ ràng sau khi tư vấn, trước khi bắt đầu cắt.",
+      "Gửi ảnh tóc hiện tại qua Zalo để được báo giá nhanh."
+    ],
+    "faq": [
+      {
+        "q": "Cắt tóc layer nữ bao nhiêu tiền?",
+        "a": "Tại TP.HCM, cắt tóc layer nữ thường có giá từ khoảng 150.000đ đến 600.000đ tuỳ salon, độ dài tóc và độ phức tạp của kiểu (butterfly, wolf cut thường cao hơn layer cơ bản). Tại Chan Hair, stylist báo giá rõ ràng sau khi tư vấn và trước khi cắt."
+      },
+      {
+        "q": "Tóc mỏng có cắt layer được không?",
+        "a": "Được, nhưng nên cắt ít tầng và giữ phần đuôi dày. Các kiểu như layer ngang vai, hush cut nhẹ hay layer kết hợp uốn sóng lơi giúp tóc mỏng trông dày và bồng hơn."
+      },
+      {
+        "q": "Cắt tóc layer có cần uốn không?",
+        "a": "Không bắt buộc. Tóc layer chỉ cần sấy là vào nếp. Nếu bạn ít thời gian tạo kiểu hoặc tóc rất thẳng, uốn cụp hay uốn sóng lơi phần đuôi giúp các tầng giữ nếp lâu hơn."
+      },
+      {
+        "q": "Cắt layer có làm tóc ngắn đi nhiều không?",
+        "a": "Không. Với layer dài, độ dài tổng thể chỉ tỉa nhẹ phần đuôi; các tầng ngắn nằm ở lớp trên và quanh mặt. Bạn có thể báo trước với stylist độ dài tối thiểu muốn giữ."
+      },
+      {
+        "q": "Bao lâu nên tỉa lại tóc layer?",
+        "a": "Tóc layer ngắn khoảng 4–6 tuần, ngang vai 6–8 tuần, tóc dài 8–12 tuần. Phần mái bay nên tỉa sau khoảng 3–4 tuần."
+      },
+      {
+        "q": "Mặt tròn có hợp tóc layer không?",
+        "a": "Rất hợp nếu tầng bắt đầu từ dưới cằm trở xuống và để mái bay hoặc mái thưa rẽ hai bên, giúp gương mặt trông thon dài hơn. Nên tránh tầng ngắn bồng ngang má."
+      },
+      {
+        "q": "Có cần đặt lịch trước không?",
+        "a": "Nên đặt lịch qua Zalo hoặc gọi hotline để chọn được stylist và giờ phù hợp, đặc biệt vào cuối tuần."
+      }
+    ],
+    "cta": "Chưa biết kiểu layer nào hợp với mình? Gửi ảnh chân dung và ảnh tóc hiện tại qua Zalo, stylist Chan Hair sẽ tư vấn miễn phí."
+  },
+  "trang_kieu_toc": {
+    "path": "/toc-layer/",
+    "breadcrumb": "Kiểu tóc layer",
+    "tu_khoa_chinh": "kiểu tóc layer",
+    "title": "Các Kiểu Tóc Layer Nữ Đẹp 2026 – Ảnh Thật Tại Chan Hair",
+    "meta_description": "Tổng hợp các kiểu tóc layer nữ đẹp 2026: layer dài Hàn Quốc, ngang vai, ngắn, mái bay, butterfly, hush cut, wolf cut. Ảnh khách thật và cách chọn kiểu hợp mặt.",
+    "h1": "Các kiểu tóc layer nữ đẹp 2026",
+    "lead": "Ảnh thật của khách cắt tại Chan Hair, kèm gợi ý kiểu layer hợp khuôn mặt, độ dài và chất tóc.",
+    "gioi_thieu": [
+      "Tóc layer (tóc tầng) là cách cắt tóc thành nhiều lớp có độ dài khác nhau. Các lớp trên ngắn hơn tạo độ phồng ở đỉnh đầu, các lớp dưới dài hơn giữ dáng tóc, nhờ đó mái tóc nhẹ hơn và chuyển động tự nhiên.",
+      "Để chọn kiểu layer phù hợp, hãy xem ba yếu tố: độ dài tóc bạn muốn giữ, khuôn mặt (tròn, dài, vuông, trái xoan) và chất tóc (dày, mỏng, thẳng, có nếp). Nếu chưa chắc, hãy gửi ảnh cho stylist để được tư vấn trước khi cắt."
+    ]
+  }
+}
